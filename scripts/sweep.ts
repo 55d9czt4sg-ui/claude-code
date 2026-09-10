@@ -156,9 +156,9 @@ async function closeExpired(owner: string, repo: string) {
 // --
 
 const owner = process.env.GITHUB_REPOSITORY_OWNER;
-const repo = process.env.GITHUB_REPOSITORY_NAME;
+const repo = process.env.GITHUB_REPOSITORY?.split("/")[1];
 if (!owner || !repo)
-  throw new Error("GITHUB_REPOSITORY_OWNER and GITHUB_REPOSITORY_NAME required");
+  throw new Error("GITHUB_REPOSITORY_OWNER and GITHUB_REPOSITORY environment variables required");
 
 if (DRY_RUN) console.log("DRY RUN — no changes will be made\n");
 
